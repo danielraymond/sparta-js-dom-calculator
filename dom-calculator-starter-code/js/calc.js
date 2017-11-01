@@ -17,27 +17,18 @@
 
 var buttons = document.querySelectorAll('.buttonNum');
 
-// for (var i = 0; i < buttons.length; i++) {
-//   button.addEventListener("click", buttonType)
-//
-//   function buttonType() {
-//     console.log(this.innerHTML + " was clicked");
-//     return this.innerHTML;
-//   }
-//   test = buttontype();
-//   console.log(test);
-// }
-
 for (var i = 0; i < buttons.length; i++) {
   var button = buttons[i];
   button.addEventListener("click", buttonType);
-
-  function buttonType() {
-    console.log(this.innerHTML + " was clicked");
-    var input = this.innerHTML;
-    return input;
-  }
+  buttonType();
 }
+
+function buttonType() {
+  console.log(this.innerHTML + " was clicked");
+  var input = this.innerHTML;
+  return input;
+}
+
 
 
   // have a storage for which numbers are used
