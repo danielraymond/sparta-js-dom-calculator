@@ -35,12 +35,23 @@ function buttonListeners() {
   var equalsButton = document.getElementsByClassName('equals');
 
   enterNumber(numberButtons);
+  enterOperators(operatorButtons)
 }
 
 function enterNumber(numbers) {
   // loop to set click listeners on each button
   for (var i = 0; i < numbers.length; i ++) {
     numbers[i].addEventListener("click", function(event){
+      var test = this.innerHTML;
+      console.log("button - " + test + " has been clicked");
+    })
+  }
+}
+
+function enterOperators(operators) {
+  // loop to set click listeners on each button
+  for (var i = 0; i < operators.length; i ++) {
+    operators[i].addEventListener("click", function(event){
       var test = this.innerHTML;
       console.log("button - " + test + " has been clicked");
     })
