@@ -1,38 +1,11 @@
-  // user input storage
-  // function userInputStorage(numberOne, numberTwo, operator) {
-  // }
-  // var test = userInputStorage();
-  // console.log(test);
-  // create dom events for each button
-
-  // var number = document.getElementsByTagName('button')[1].textContent;
-  // console.log(number);
-
-// var buttons = document.querySelectorAll('.buttonNum');
-//
-// for (var i = 0; i < buttons.length; i++) {
-//   var button = buttons[i];
-//   button.addEventListener("click", buttonType);
-//   buttonType();
-// }
-//
-// function buttonType() {
-//   console.log(this.innerHTML + " was clicked");
-//   var input = this.innerHTML;
-//   return input;
-// }
-  // have a storage for which numbers are used
-  // have a storage for each operator used
-  // create functions for what each operator does
-
-// set up listeners for buttons
-
+// global calculator number variables
 var numberOne = true;
 var numberTwo = false;
 var operator = false;
 
 buttonListeners();
 
+// function to call other functions to set listeners on numbers
 function buttonListeners() {
   var numberButtons = document.getElementsByClassName('buttonNum');
   var operatorButtons = document.getElementsByClassName('operator');
@@ -45,11 +18,13 @@ function buttonListeners() {
   getAnswer(equalsButton);
 }
 
+// function to set values of numbers and output to screen
 function enterNumber(numbers) {
   var calcScreen = document.getElementById('screen');
   // loop to set click listeners on each button
   for (var i = 0; i < numbers.length; i ++) {
     numbers[i].addEventListener("click", function(event){
+      // if statement to set number values only once
       if (numberOne === true) {
         numberOne = parseInt(this.innerHTML);
         calcScreen.innerHTML = this.innerHTML;
@@ -62,6 +37,7 @@ function enterNumber(numbers) {
   }
 }
 
+// function to set operator
 function enterOperators(operators) {
   var calcScreen = document.getElementById('screen');
   // loop to set click listeners on each button
@@ -76,6 +52,7 @@ function enterOperators(operators) {
   }
 }
 
+// function to clear calculator
 function clearScreen(clear) {
   var calcScreen = document.getElementById('screen');
   clear[0].addEventListener("click", function(event){
@@ -86,6 +63,7 @@ function clearScreen(clear) {
   })
 }
 
+// function to calculate answer
 function getAnswer(equals){
   var calcScreen = document.getElementById('screen');
   equals[0].addEventListener("click", function(event){
@@ -94,6 +72,7 @@ function getAnswer(equals){
   })
 }
 
+// function to check which operator has been entered and do the calculation
 function doCalculation() {
   switch (operator) {
     case "+":
