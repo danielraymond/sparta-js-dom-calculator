@@ -1,6 +1,6 @@
   // user input storage
   // function userInputStorage(numberOne, numberTwo, operator) {
-  }
+  // }
   // var test = userInputStorage();
   // console.log(test);
   // create dom events for each button
@@ -24,3 +24,25 @@
   // have a storage for which numbers are used
   // have a storage for each operator used
   // create functions for what each operator does
+
+// set up listeners for buttons
+buttonListeners();
+
+function buttonListeners() {
+  var numberButtons = document.getElementsByClassName('buttonNum');
+  var operatorButtons = document.getElementsByClassName('operator');
+  var clearButton = document.getElementsByClassName('buttonClear');
+  var equalsButton = document.getElementsByClassName('equals');
+
+  enterNumber(numberButtons);
+}
+
+function enterNumber(numbers) {
+  // loop to set click listeners on each button
+  for (var i = 0; i < numbers.length; i ++) {
+    numbers[i].addEventListener("click", function(event){
+      var test = this.innerHTML;
+      console.log("button - " + test + " has been clicked");
+    })
+  }
+}
