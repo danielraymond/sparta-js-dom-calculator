@@ -26,6 +26,11 @@
   // create functions for what each operator does
 
 // set up listeners for buttons
+
+var numberOne = true;
+var numberTwo = false;
+var operator = false;
+
 buttonListeners();
 
 function buttonListeners() {
@@ -37,6 +42,7 @@ function buttonListeners() {
   enterNumber(numberButtons);
   enterOperators(operatorButtons);
   clearScreen(clearButton);
+  getAnswer(equalsButton);
 }
 
 function enterNumber(numbers) {
@@ -44,9 +50,14 @@ function enterNumber(numbers) {
   // loop to set click listeners on each button
   for (var i = 0; i < numbers.length; i ++) {
     numbers[i].addEventListener("click", function(event){
-      var test = this.innerHTML;
-      console.log("button - " + test + " has been clicked");
-      calcScreen.innerHTML = this.innerHTML;
+      if (numberOne === true) {
+        numberOne = parseInt(this.innerHTML);
+        calcScreen.innerHTML = this.innerHTML;
+        operator = true;
+      } else if (numberTwo === true) {
+        numberTwo = parseInt(this.innerHTML);
+        calcScreen.innerHTML = this.innerHTML;
+      }
     })
   }
 }
@@ -56,9 +67,11 @@ function enterOperators(operators) {
   // loop to set click listeners on each button
   for (var i = 0; i < operators.length; i ++) {
     operators[i].addEventListener("click", function(event){
-      var test = this.innerHTML;
-      console.log("button - " + test + " has been clicked");
-      calcScreen.innerHTML = this.innerHTML;
+      if (operator === true) {
+        operator = this.innerHTML;
+        numberTwo = true;
+        calcScreen.innerHTML = this.innerHTML;
+      }
     })
   }
 }
@@ -67,5 +80,35 @@ function clearScreen(clear) {
   var calcScreen = document.getElementById('screen');
   clear[0].addEventListener("click", function(event){
     calcScreen.innerHTML = "Sparta Calculator";
+    numberOne = true;
+    numberTwo = false;
+    operator = false;
   })
+}
+
+function getAnswer(equals){
+  var calcScreen = document.getElementById('screen');
+  equals[0].addEventListener("click", function(event){
+    var answer = doCalculation();
+    calcScreen.innerHTML = answer;
+  })
+}
+
+function doCalculation() {
+  switch (operator) {
+    case "+":
+      return (numberOne + numberTwo).toFixed(2);
+      break;
+    case "-":
+      return (numberOne - numberTwo).toFixed(2);
+      break;
+    case "*":
+      return (numberOne * numberTwo).toFixed(2);
+      break;
+    case "/":
+      return (numberOne / numberTwo).toFixed(2);
+      break;
+    default:
+      return "Err";
+  }
 }
